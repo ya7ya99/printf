@@ -1,5 +1,18 @@
 #include "main.h"
 
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
 /**
  * _puts - prints a string with newline
  * @s: the string to print
@@ -33,7 +46,7 @@ int	_checker(const char format, va_list ap)
 	if (format == '%')
 		len += _putchar('%');
 	else if (format == 'c')
-		len += _putchar(va_arg(ap, int));
+		len += _putnbr(va_arg(ap, int));
 	else if (format == 's')
 		len += _puts(va_arg(ap, char *));
 	else if (format == 'd' || format == 'i')

@@ -1,13 +1,8 @@
 #include "main.h"
 
-int	_putchar(char c)
-{	
-	return (write(1, &c, 1));
-}
-
 int	_putnbr(int n)
 {
-	int			len;
+	int	len;
 	int nb;
 
 	len = 0;
@@ -28,3 +23,4 @@ int	_putnbr(int n)
 	}
 	return (len);
 }
+
