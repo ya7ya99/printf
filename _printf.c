@@ -1,103 +1,76 @@
 #include "main.h"
 
 /**
-<<<<<<< Updated upstream
  * _puts - prints a string with newline
- * @str: the string to print
+ * @s: the string to print
  *
- * Return: number of characters printed
+ * Return: void
  */
-int _puts(char *str)
+int	_puts(char *s)
 {
-int count = 0;
+	int	len;
 
-while (*str)
-{
-_putchar(*str);
-str++;
-count++;
-}
-
-_putchar('\n');
-count++;
-
-return (count);
+	len = 0;
+	if (!s)
+		s = "(null)";
+	while (*s)
+		len += write(1, s++, 1);
+	return (len);
 }
 
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
+ * _checker - checker
+ * @format: The format character specifying the output format
+ * @ap: The va_list containing the arguments
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(int c)
-{
-static char buf[OUTPUT_BUF_SIZE];
-static int i;
-
-if (c == BUF_FLUSH || i >= OUTPUT_BUF_SIZE)
-{
-write(1, buf, i);
-i = 0;
-}
-
-if (c != BUF_FLUSH)
-{
-buf[i] = c;
-i++;
-}
-
-return (1);
-=======
- * _printf - Function to print a variety of data types
- * @format: The format string specifying the output format
  * Return: The total number of bytes printed
  */
-int _printf(const char *format, ...)
+int	_checker(const char format, va_list ap)
 {
-    int sum = 0;
-    va_list ap;
-    char *p, *start;
-    params_t params = PARAMS_INIT;
+	int	len;
 
-    va_start(ap, format);
+	len = 0;
+	if (format == '%')
+		len += _putchar('%');
+	else if (format == 'c')
+		len += _putchar(va_arg(ap, int));
+	else if (format == 's')
+		len += _puts(va_arg(ap, char *));
+	else if (format == 'd' || format == 'i')
+		len += _putnbr(va_arg(ap, int));
+	else
+		len += _putchar(format);
+	return (len);
+}
 
-    if (!format || (format[0] == '%' && !format[1]))
-        return (-1);
-    if (format[0] == '%' && format[1] == ' ' && !format[2])
-        return (-1);
+/**
+ * _printf - Function to print a variety of data types
+ * @format: The format string specifying the output format
+ *
+ * Return: The total number of bytes printed
+ */
+int	_printf(const char *format, ...)
+{
+	int		i;
+	int		len;
+	va_list	ap;
 
-    for (p = (char *)format; *p; p++) {
-        init_params(&params, ap);
-        if (*p != '%') {
-            sum += _putchar(*p);
-            continue;
-        }
-
-        start = p;
-        p++;
-        while (get_flag(p, &params)) {
-            p++;
-        }
-
-        p = get_width(p, &params, ap);
-        p = get_precision(p, &params, ap);
-        
-        if (get_modifier(p, &params))
-            p++;
-
-        if (!get_specifier(p)) {
-            sum += print_from_to(start, p,
-                                 params.l_modifier || params.h_modifier ? p - 1 : 0);
-        } else {
-            sum += get_print_func(p, ap, &params);
-        }
-    }
-
-    _putchar(BUF_FLUSH);
-    va_end(ap);
-    return (sum);
->>>>>>> Stashed changes
+	i = -1;
+	len = 0;
+	va_start(ap, format);
+	while (format[++i])
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			while (format[i] == ' ' && format[i])
+				i++;
+			len += _checker(format[i], ap);
+		}
+		else
+			len += _putchar(format[i]);
+	}
+	va_end(ap);
+	return (len);
 }
 

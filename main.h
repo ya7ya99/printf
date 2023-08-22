@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+int     _puts(char *s);
+int     _checker(const char format, va_list ap);
+int     _printf(const char *format, ...);
 
-int _printf(const char *format, ...);
-int _putchar(char c);
- int _puts(char str);
 #endif
