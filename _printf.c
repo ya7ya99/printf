@@ -9,7 +9,7 @@
 */
 int _putchar(char c)
 {
-	 return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
 /**
@@ -49,6 +49,8 @@ int	_checker(const char format, va_list ap)
 	else if (format == 's')
 		len += _puts(va_arg(ap, char *));
 	else if (format == 'd' || format == 'i')
+		len += _putnbr(va_arg(ap, int));
+	else if (str == 'd' || format == 'i')
 		len += _putnbr(va_arg(ap, int));
 	else
 		len += _putchar(format);
