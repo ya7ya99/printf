@@ -50,7 +50,7 @@ int	_checker(const char format, va_list ap)
 		len += _puts(va_arg(ap, char *));
 	else if (format == 'd' || format == 'i')
 		len += _putnbr(va_arg(ap, int));
-	else if (str == 'd' || format == 'i')
+	else if (format == 'd' || format == 'i')
 		len += _putnbr(va_arg(ap, int));
 	else
 		len += _putchar(format);
