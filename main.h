@@ -6,7 +6,13 @@
 #include <unistd.h>
 #include <stdio.h>
 
+<<<<<<< Updated upstream
 int _printf(const char *format, ...);
 int _putchar(char c)
+=======
+
+int _printf(const char *format, ...);
+
+>>>>>>> Stashed changes
 
 #endif
