@@ -8,19 +8,19 @@
  */
 int _puts(char *str)
 {
-    int count = 0;
+int count = 0;
 
-    while (*str)
-    {
-        _putchar(*str);
-        str++;
-        count++;
-    }
+while (*str)
+{
+_putchar(*str);
+str++;
+count++;
+}
 
-    _putchar('\n'); // Print a newline character
-    count++;
+_putchar('\n');
+count++;
 
-    return count;
+return (count);
 }
 
 /**
@@ -32,20 +32,20 @@ int _puts(char *str)
  */
 int _putchar(int c)
 {
-    static char buf[OUTPUT_BUF_SIZE];
-    static int i = 0;
-    
-    if (c == BUF_FLUSH || i >= OUTPUT_BUF_SIZE)
-    {
-        write(1, buf, i);
-        i = 0;
-    }
-    
-    if (c != BUF_FLUSH)
-    {
-        buf[i] = c;
-        i++;
-    }
-    
-    return 1;
+static char buf[OUTPUT_BUF_SIZE];
+static int i;
+
+if (c == BUF_FLUSH || i >= OUTPUT_BUF_SIZE)
+{
+write(1, buf, i);
+i = 0;
+}
+
+if (c != BUF_FLUSH)
+{
+buf[i] = c;
+i++;
+}
+
+return (1);
 }
