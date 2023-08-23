@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+  * _putnbr - Function to print an integer
+  *@n: The integer to be printed
+  *Return: the number
+*/
 int	_putnbr(int n)
 {
 	int	len;
