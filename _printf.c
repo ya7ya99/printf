@@ -41,6 +41,7 @@ int	_puts(char *s)
 {
          int     len;
 
+<<<<<<< HEAD
          len = 0;
          if (format == '%')
          {
@@ -86,6 +87,20 @@ int	_puts(char *s)
                  len += _putchar(format);
          }
   return (len);
+=======
+	len = 0;
+	if (format == '%')
+		len += _putchar('%');
+	else if (format == 'c')
+		len += _putnbr(va_arg(ap, int));
+	else if (format == 's')
+		len += _puts(va_arg(ap, char *));
+	else if (format == 'd' || format == 'i')
+		len += _putnbr(va_arg(ap, int));
+	else
+		len += _putchar(format);
+	return (len);
+>>>>>>> a0bea15045f5be39750d0e873586fa6a66eb28e6
 }
 
 /**
