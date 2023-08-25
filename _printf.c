@@ -29,7 +29,6 @@ int	_puts(char *s)
 		len += write(1, s++, 1);
 	return (len);
 }
-
 /**
  * _checker - checker
  * @format: The format character specifying the output format
@@ -37,70 +36,47 @@ int	_puts(char *s)
  *
  * Return: The total number of bytes printed
  */
- int    _checker(const char format, va_list ap)
+int    _checker(const char format, va_list ap)
 {
-         int     len;
+	int len;
 
-<<<<<<< HEAD
-         len = 0;
-         if (format == '%')
-         {
-                 len += _putchar('%');
-         }
-         else if (format == 'c')
-         {
-                 len += _putchar(va_arg(ap, char));
-         }
-         else if (format == 's')
-         {
-                 len += _puts(va_arg(ap, char *));
-         }
-         else if (format == 'd' || format == 'i')
-         {
-                  len += _putnbr(va_arg(ap, int));
-         }
-         else if (format == 'o')
-         {
-                 len += _puts(octal(va_arg(ap, int)));
-         }
-         else if (format == 'u')
-         {
-                  len += _putunsigned(va_arg(ap, unsigned int));
-         }
-         else if (format == 'x')
-         {
-        len += _printhexHEX(va_arg(ap, int), 1);
-         }
-         else if (format == 'X')
-         {
-        len += _printhexHEX(va_arg(ap, int), 2);
-         }
-           else if (format == 'p')
-           {
-             len += _putchar('0');
-             len += _putchar('x');
-             len += _printhex(va_arg(ap, unsigned long int));
-           }
-         else
-         {
-                _putchar('%');
-                 len += _putchar(format);
-         }
-  return (len);
-=======
 	len = 0;
 	if (format == '%')
+	{
 		len += _putchar('%');
+	}
 	else if (format == 'c')
-		len += _putnbr(va_arg(ap, int));
+	{
+		len += _putchar(va_arg(ap, char));
+	}
 	else if (format == 's')
+	{
 		len += _puts(va_arg(ap, char *));
+	}
 	else if (format == 'd' || format == 'i')
+	{
 		len += _putnbr(va_arg(ap, int));
+	}
+	else if (format == 'o')
+		len += _puts(octal(va_arg(ap, int)));
+	else if (format == 'u')
+		len += _putunsigned int(va_arg(ap, unsigned int int));
+	else if (format == 'x')
+		len += _printhexHEX(va_arg(ap, int), 1);
+	else if (format == 'X')
+		len += _printhexHEX(va_arg(ap, int), 2);
+	else if (format == 'p')
+	{
+		len += _putchar('0');
+		len += _putchar('x');
+		len += _printhex(va_arg(ap, unsigned long int));
+	}
 	else
+	{
+		_putchar('%');
 		len += _putchar(format);
+	}
 	return (len);
->>>>>>> a0bea15045f5be39750d0e873586fa6a66eb28e6
 }
 
 /**
