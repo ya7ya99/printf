@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
+char *octal(int decimal);
 int my_puts(char *s);
 int  _checker(const char format, va_list ap);
 int _printf(const char *format, ...);

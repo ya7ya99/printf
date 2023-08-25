@@ -8,12 +8,14 @@
 * octal representation. It returns a string containing the octal number.
 */
 
-char* octal(int decimal)
+char *octal(int decimal)
 {
 	static char len[100];
-
 	int octalNum[100];
 	int i = 0;
+
+	int str = 0;
+	int j;
 
 	while (decimal > 0)
 	{
@@ -22,9 +24,7 @@ char* octal(int decimal)
 		i++;
 	}
 
-	int str = 0;
-
-	for (int j = i - 1; j >= 0; j--)
+	for (j = i - 1; j >= 0; j--)
 	{
 		len[str++] = octalNum[j] + '0';
 	}
