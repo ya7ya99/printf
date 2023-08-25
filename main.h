@@ -1,12 +1,14 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
+#include <string.h>
 #include <stdint.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 
+char *binary(int dec);
 char *octal(int decimal);
 int my_puts(char *s);
 int  _checker(const char format, va_list ap);

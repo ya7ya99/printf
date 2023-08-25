@@ -40,6 +40,8 @@ int    _checker(const char format, va_list ap)
 		len += _printhexHEX(va_arg(ap, int), 2);
 	else if (format == 'o')
 		len += my_puts(octal(va_arg(ap, int)));
+	else if (format == 'b')
+		len += my_puts(binary(va_arg(ap, int)));
 	else if (format == 'p')
 	{
 		len += _putchar('0');
