@@ -8,7 +8,7 @@
 * octal representation. It returns a string containing the octal number.
 */
 
-char *octal(int decimal)
+char* octal(int decimal)
 {
 	static char len[100];
 

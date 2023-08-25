@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
-* _putchar - writes the character c to stdout
-* @c: The character to print
-*
+* _printhexHEX - writes the character c to stdout
+* @nb: The character to print
+* @base: likan ra 3yit
 * Return: On success 1.
 * On error, -1 is returned, and errno is set appropriately.
 */

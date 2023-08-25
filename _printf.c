@@ -13,23 +13,6 @@ int _putchar(char c)
 }
 
 /**
- * _puts - prints a string with newline
- * @s: the string to print
- *
- * Return: void
- */
-int	_puts(char *s)
-{
-	int	len;
-
-	len = 0;
-	if (!s)
-		s = "(null)";
-	while (*s)
-		len += write(1, s++, 1);
-	return (len);
-}
-/**
  * _checker - checker
  * @format: The format character specifying the output format
  * @ap: The va_list containing the arguments
@@ -42,25 +25,15 @@ int    _checker(const char format, va_list ap)
 
 	len = 0;
 	if (format == '%')
-	{
 		len += _putchar('%');
-	}
 	else if (format == 'c')
-	{
-		len += _putchar(va_arg(ap, char));
-	}
+		len += _putchar(va_arg(ap, int));
 	else if (format == 's')
-	{
-		len += _puts(va_arg(ap, char *));
-	}
+		len += my_puts(va_arg(ap, char *));
 	else if (format == 'd' || format == 'i')
-	{
 		len += _putnbr(va_arg(ap, int));
-	}
-	else if (format == 'o')
-		len += _puts(octal(va_arg(ap, int)));
 	else if (format == 'u')
-		len += _putunsigned int(va_arg(ap, unsigned int int));
+		len += _putunsigned(va_arg(ap, unsigned int));
 	else if (format == 'x')
 		len += _printhexHEX(va_arg(ap, int), 1);
 	else if (format == 'X')
@@ -109,4 +82,19 @@ int	_printf(const char *format, ...)
 	va_end(ap);
 	return (len);
 }
+/**
+ * my_puts - prints a string with newlin
+ * @s: the string to print
+ * Return: void
+ */
+int my_puts(char *s)
+{
+	int     len;
 
+	len = 0;
+	if (!s)
+		s = "(null)";
+	while (*s)
+		len += write(1, s++, 1);
+	return (len);
+}
